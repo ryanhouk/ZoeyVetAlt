@@ -4,6 +4,8 @@ import {
   faCalendarAlt,
   faPawSimple,
   faChartLine,
+  faListCheck,
+  faBox,
 } from "@fortawesome/pro-duotone-svg-icons";
 
 export interface NavItem {
@@ -30,17 +32,31 @@ export const navigationItems: NavItem[] = [
     iconColor: "text-purple-500",
   },
   {
+    title: "Tasks",
+    path: "/tasks",
+    icon: faListCheck,
+    tooltip: "Tasks",
+    iconColor: "text-green-500",
+  },
+  {
     title: "Patients",
     path: "/patients",
     icon: faPawSimple,
     tooltip: "Patients",
-    iconColor: "text-green-500",
+    iconColor: "text-yellow-500",
+  },
+  {
+    title: "Inventory",
+    path: "/inventory",
+    icon: faBox,
+    tooltip: "Inventory",
+    iconColor: "text-orange-500",
   },
   {
     title: "Analytics",
     path: "/analytics",
     icon: faChartLine,
     tooltip: "Analytics",
-    iconColor: "text-orange-500",
+    iconColor: "text-red-500",
   },
 ];

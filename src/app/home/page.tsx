@@ -1,13 +1,14 @@
-"use client";
-import Sidebar from "@/components/nav/Sidebar";
+import Container from "@/components/layout/Container";
+import { AppointmentCard } from "@/components/schedule/AppointmentCard";
+import { appointments } from "@/data/appointments";
 import React from "react";
 
 const page = () => {
   return (
     <>
-      <div>
-        <Sidebar />
-      </div>
+      <Container>
+        <AppointmentCard appointment={appointments[0]} />
+      </Container>
     </>
   );
 };
