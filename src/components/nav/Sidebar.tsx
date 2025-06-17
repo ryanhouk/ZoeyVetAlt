@@ -8,6 +8,33 @@ import {
   faChevronRight,
 } from "@fortawesome/pro-duotone-svg-icons";
 
+interface TooltipProps {
+  text: string;
+  children: React.ReactNode;
+  isExpanded: boolean;
+}
+
+const Tooltip = ({ text, children, isExpanded }: TooltipProps) => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  return (
+    <div
+      className="relative"
+      onMouseEnter={() => !isExpanded && setIsVisible(true)}
+      onMouseLeave={() => !isExpanded && setIsVisible(false)}
+      onTouchStart={() => !isExpanded && setIsVisible(true)}
+      onTouchEnd={() => !isExpanded && setIsVisible(false)}>
+      {children}
+      {!isExpanded && isVisible && (
+        <div className="absolute left-full ml-2 top-1/2 -translate-y-1/2 px-2 py-1 bg-black text-white text-sm rounded-md whitespace-nowrap z-50">
+          {text}
+          <div className="absolute left-0 top-1/2 -translate-x-1 -translate-y-1/2 w-2 h-2 bg-black transform rotate-45"></div>
+        </div>
+      )}
+    </div>
+  );
+};
+
 const Sidebar = () => {
   const [isExpanded, setIsExpanded] = useState(true);
 
@@ -48,23 +75,26 @@ const Sidebar = () => {
               <p className="text-xs font-semibold text-neutral-500">Main</p>
             )}
             {navigationItems.map((item) => (
-              <Link
+              <Tooltip
                 key={item.path}
-                href={item.path}
-                title={item.tooltip}
-                className={`flex items-center group gap-2 p-2 text-black rounded-lg hover:border-neutral-300 border transition-all border-white ${
-                  !isExpanded && "justify-center"
-                }`}>
-                <FontAwesomeIcon
-                  icon={item.icon}
-                  className={`w-4 h-4 ${item.iconColor} ${
-                    isExpanded ? "group-hover:ml-2" : ""
-                  } transition-all`}
-                />
-                {isExpanded && (
-                  <span className="text-sm font-semibold">{item.title}</span>
-                )}
-              </Link>
+                text={item.tooltip}
+                isExpanded={isExpanded}>
+                <Link
+                  href={item.path}
+                  className={`flex items-center group gap-2 p-2 text-black rounded-lg hover:border-neutral-300 border transition-all border-white ${
+                    !isExpanded && "justify-center"
+                  }`}>
+                  <FontAwesomeIcon
+                    icon={item.icon}
+                    className={`w-4 h-4 ${item.iconColor} ${
+                      isExpanded ? "group-hover:ml-2" : ""
+                    } transition-all`}
+                  />
+                  {isExpanded && (
+                    <span className="text-sm font-semibold">{item.title}</span>
+                  )}
+                </Link>
+              </Tooltip>
             ))}
           </nav>
         </div>
