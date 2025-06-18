@@ -22,7 +22,7 @@ export const appointments: Appointment[] = [
     type: "Annual Checkup",
     provider: "Dr. Gronk",
     facility: "Rocklin",
-    status: "Scheduled",
+    status: "In Progress",
   },
   {
     time: "10:30 AM",
@@ -33,7 +33,7 @@ export const appointments: Appointment[] = [
     },
     type: "Dental Cleaning",
     provider: "Dr. Edwards",
-    facility: "Rocklin",
+    facility: "Chico",
     status: "Scheduled",
   },
   {
@@ -45,8 +45,8 @@ export const appointments: Appointment[] = [
     },
     type: "Vaccination",
     provider: "Dr. Gronk",
-    facility: "Chico",
-    status: "Scheduled",
+    facility: "Rocklin",
+    status: "Cancelled",
   },
   {
     time: "2:45 PM",

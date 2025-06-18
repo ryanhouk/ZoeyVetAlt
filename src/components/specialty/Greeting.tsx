@@ -38,13 +38,13 @@ const Greeting = () => {
   }, []);
 
   return (
-    <section className="flex items-end justify-between relative z-10 p-4 lg:px-12">
+    <section className="flex items-end  justify-between relative z-10 p-4 lg:px-12">
       <h1 className="text-2xl lg:text-4xl font-bold">
         Good morning, Dr. Gronkiewicz
       </h1>
-      <div className="flex flex-col">
-        <p className="text-muted-foreground font-bold">{dayOfWeek}</p>
-        <p className="text-4xl font-semibold tabular-nums">
+      <div className="flex text-right flex-col">
+        <p className="text-black/50 font-bold">{dayOfWeek}</p>
+        <p className="text-5xl font-semibold tabular-nums">
           <span>{time.replace(/^0(\d):/, "$1:")}</span>
         </p>
       </div>
