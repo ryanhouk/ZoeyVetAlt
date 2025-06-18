@@ -21,9 +21,7 @@ const ContentHeader = ({ title, description, linkTitle, linkHref }: Props) => {
           </Link>
         )}
       </div>
-      {description && (
-        <p className="text-sm text-neutral-500 mb-2">{description}</p>
-      )}
+      {description && <p className="text-sm text-neutral-500">{description}</p>}
     </div>
   );
 };

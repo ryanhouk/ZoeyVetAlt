@@ -9,10 +9,16 @@ const Greeting = () => {
     const updateDateTime = () => {
       const now = new Date();
 
-      // Update time
-      const hours = now.getHours().toString().padStart(2, "0");
-      const minutes = now.getMinutes().toString().padStart(2, "0");
-      setTime(`${hours}:${minutes}`);
+      // Update time in 12-hour format
+      let hours = now.getHours();
+      const minutes = now.getMinutes();
+      const ampm = hours >= 12 ? "PM" : "AM";
+      hours = hours % 12;
+      hours = hours ? hours : 12; // the hour '0' should be '12'
+      const timeString = `${hours}:${minutes
+        .toString()
+        .padStart(2, "0")} ${ampm}`;
+      setTime(timeString);
 
       // Update day of week
       const days = [
@@ -38,14 +44,14 @@ const Greeting = () => {
   }, []);
 
   return (
-    <section className="flex items-end  justify-between relative z-10 p-4 lg:px-12">
+    <section className="flex items-end justify-between relative z-10">
       <h1 className="text-2xl lg:text-4xl font-bold">
         Good morning, Dr. Gronkiewicz
       </h1>
-      <div className="flex text-right flex-col">
+      <div className="flex flex-col">
         <p className="text-black/50 font-bold">{dayOfWeek}</p>
         <p className="text-5xl font-semibold tabular-nums">
-          <span>{time.replace(/^0(\d):/, "$1:")}</span>
+          <span>{time}</span>
         </p>
       </div>
     </section>
