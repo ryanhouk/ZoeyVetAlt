@@ -77,7 +77,7 @@ const statusColors = {
 export function AppointmentCard({ appointment }: AppointmentCardProps) {
   return (
     <div
-      className={`flex items-center rounded-lg border border-l-4 p-3 transition-all hover:bg-white hover:shadow-md ${
+      className={`flex items-center rounded-xl border-l-4 p-3 transition-all hover:brightness-95 ${
         visitTypeColors[appointment.type as keyof typeof visitTypeColors]
           ?.border || "border-gray-500"
       } ${
