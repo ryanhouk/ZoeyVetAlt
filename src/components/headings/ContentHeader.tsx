@@ -10,13 +10,14 @@ type Props = {
 
 const ContentHeader = ({ title, description, linkTitle, linkHref }: Props) => {
   return (
-    <div className="flex flex-col mb-3">
+    <div className="mb-3 flex flex-col">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold mb-2">{title}</h1>
+        <h1 className="mb-2 text-2xl font-bold">{title}</h1>
         {linkTitle && linkHref && (
           <Link
             href={linkHref}
-            className="font-semibold px-3 py-1 transition-all rounded-full hover:bg-neutral-200 text-sm">
+            className="rounded-full px-3 py-1 text-sm font-semibold transition-all hover:bg-neutral-200"
+          >
             {linkTitle}
           </Link>
         )}

@@ -20,7 +20,7 @@ const IconCard = ({
 }: Props) => {
   return (
     <Link href={href} className="group">
-      <div className="flex flex-col gap-3 hover:shadow-lg transition-all border border-neutral-300 hover:border-neutral-400 p-4 rounded-2xl text-left hover:-translate-y-1">
+      <div className="flex flex-col gap-3 rounded-2xl border border-neutral-300 p-4 text-left transition-all hover:-translate-y-1 hover:border-neutral-400 hover:shadow-lg">
         <FontAwesomeIcon
           icon={icon}
           className={`text-2xl ${iconColor} self-start`}

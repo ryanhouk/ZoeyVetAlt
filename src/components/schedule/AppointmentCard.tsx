@@ -1,4 +1,8 @@
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowRight,
+  faMars,
+  faVenus,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface Appointment {
@@ -7,6 +11,7 @@ interface Appointment {
     name: string;
     breed: string;
     owner: string;
+    gender: "male" | "female";
   };
   type: string;
   provider: string;
@@ -72,7 +77,7 @@ const statusColors = {
 export function AppointmentCard({ appointment }: AppointmentCardProps) {
   return (
     <div
-      className={`flex items-center p-3 rounded-lg border-l-4 hover:brightness-95 transition-all ${
+      className={`flex items-center rounded-lg border border-l-4 p-3 transition-all hover:bg-white hover:shadow-md ${
         visitTypeColors[appointment.type as keyof typeof visitTypeColors]
           ?.border || "border-gray-500"
       } ${
@@ -81,29 +86,39 @@ export function AppointmentCard({ appointment }: AppointmentCardProps) {
       } ${
         visitTypeColors[appointment.type as keyof typeof visitTypeColors]
           ?.lightBorder || "border-gray-200"
-      } transition-all cursor-pointer`}>
-      <div className="flex items-center gap-3 w-full">
+      } cursor-pointer transition-all`}
+    >
+      <div className="flex w-full items-center gap-3">
         {/* APPT TIME */}
         <div
-          className={`text-lg font-semibold bg-white min-w-28 text-center py-2 px-3 rounded-lg border border-black/40`}>
+          className={`min-w-28 rounded-lg border border-black/40 bg-white px-3 py-2 text-center text-lg font-semibold`}
+        >
           {appointment.time}
         </div>
         {/* PATIENT INFO */}
-        <div className="flex items-center gap-3 flex-1">
+        <div className="flex flex-1 items-center gap-3">
           <div className="h-8 w-px bg-black/20" />
-          <div className="flex flex-col min-w-80">
+          <FontAwesomeIcon
+            icon={appointment.patient.gender === "male" ? faMars : faVenus}
+            className={`flex h-8 w-8 items-center justify-center rounded-full border border-black/20 bg-white p-2 text-lg ${
+              appointment.patient.gender === "male"
+                ? "text-blue-500"
+                : "text-pink-500"
+            }`}
+          />
+          <div className="flex min-w-96 flex-col">
             <div className="font-bold">
               {appointment.patient.name} • {appointment.type}
             </div>
-            <div className="font-medium text-sm text-black/70">
+            <div className="text-sm font-medium text-black/70">
               {appointment.patient.breed} • {appointment.patient.owner}
             </div>
           </div>
           {/* PROVIDER INFO */}
           <div className="flex items-center gap-3">
             <div className="h-8 w-px bg-black/20" />
-            <div className="flex flex-col min-w-80">
-              <div className="text-black font-bold">{appointment.provider}</div>
+            <div className="flex min-w-80 flex-col">
+              <div className="font-bold text-black">{appointment.provider}</div>
               <div className="text-sm font-medium text-black/70">
                 {appointment.facility}
               </div>
@@ -112,17 +127,18 @@ export function AppointmentCard({ appointment }: AppointmentCardProps) {
         </div>
 
         {/* STATUS & CHECK IN */}
-        <div id="checkin" className="flex gap-4 items-center">
+        <div id="checkin" className="flex items-center gap-4">
           <div
-            className={`font-semibold bg-white px-3 border border-black/20 py-1 rounded-full text-sm ${
+            className={`rounded-full border border-black/20 bg-white px-3 py-1 text-sm font-semibold ${
               statusColors[appointment.status]
-            }`}>
+            }`}
+          >
             {appointment.status}
           </div>
-          <div className="px-4 py-2 font-bold bg-white border-2 border-teal-500 text-teal-600 hover:text-white hover:border-teal-600 rounded-full hover:bg-teal-600 transition-colors">
+          {/* <div className="px-4 py-2 font-bold bg-white border-2 border-teal-500 text-teal-600 hover:text-white hover:border-teal-600 rounded-full hover:bg-teal-600 transition-colors">
             Patient Details
-          </div>
-          <div className="px-4 py-2 font-bold bg-teal-500 border-2 border-teal-500 text-white rounded-full hover:bg-teal-600 transition-colors">
+          </div> */}
+          <div className="rounded-full border-2 border-teal-600 bg-teal-600 px-4 py-2 font-bold text-white transition-colors hover:bg-teal-700">
             Check In
             <FontAwesomeIcon icon={faArrowRight} className="ml-2" />
           </div>

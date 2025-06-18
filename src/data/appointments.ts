@@ -4,10 +4,12 @@ export interface Appointment {
     name: string;
     breed: string;
     owner: string;
+    gender: "male" | "female";
   };
   type: string;
   provider: string;
   facility: string;
+  reason?: string;
   status: "Scheduled" | "In Progress" | "Completed" | "Cancelled" | "No Show";
 }
 
@@ -18,11 +20,13 @@ export const appointments: Appointment[] = [
       name: "Max",
       breed: "Golden Retriever",
       owner: "John Smith",
+      gender: "male",
     },
     type: "Annual Checkup",
-    provider: "Dr. Gronk",
-    facility: "Rocklin",
-    status: "In Progress",
+    provider: "Dr. Sarah Johnson",
+    facility: "Main Clinic",
+    reason: "Annual wellness exam and vaccinations",
+    status: "Scheduled",
   },
   {
     time: "10:30 AM",
@@ -30,10 +34,12 @@ export const appointments: Appointment[] = [
       name: "Luna",
       breed: "Siamese Cat",
       owner: "Sarah Johnson",
+      gender: "female",
     },
     type: "Dental Cleaning",
-    provider: "Dr. Edwards",
-    facility: "Chico",
+    provider: "Dr. Michael Brown",
+    facility: "Downtown Branch",
+    reason: "Regular dental cleaning and checkup",
     status: "Scheduled",
   },
   {
@@ -42,11 +48,13 @@ export const appointments: Appointment[] = [
       name: "Rocky",
       breed: "German Shepherd",
       owner: "Michael Brown",
+      gender: "male",
     },
     type: "Vaccination",
-    provider: "Dr. Gronk",
-    facility: "Rocklin",
-    status: "Cancelled",
+    provider: "Dr. Emily Davis",
+    facility: "Main Clinic",
+    reason: "Annual vaccinations and heartworm test",
+    status: "Scheduled",
   },
   {
     time: "2:45 PM",
@@ -54,10 +62,12 @@ export const appointments: Appointment[] = [
       name: "Bella",
       breed: "Maine Coon",
       owner: "Emily Davis",
+      gender: "female",
     },
     type: "Follow-up",
-    provider: "Dr. Edwards",
-    facility: "Rocklin",
+    provider: "Dr. David Wilson",
+    facility: "Downtown Branch",
+    reason: "Post-surgery checkup",
     status: "Scheduled",
   },
   {
@@ -66,10 +76,12 @@ export const appointments: Appointment[] = [
       name: "Charlie",
       breed: "Labrador Retriever",
       owner: "David Wilson",
+      gender: "male",
     },
     type: "Post-op",
-    provider: "Dr. Edwards",
-    facility: "Rocklin",
+    provider: "Dr. Sarah Johnson",
+    facility: "Main Clinic",
+    reason: "Suture removal and progress check",
     status: "Scheduled",
   },
 ];
