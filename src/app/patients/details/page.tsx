@@ -13,12 +13,17 @@ import {
 } from "@fortawesome/pro-duotone-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import LinkButtonBorder from "@/components/buttons/LinkButtonBorder";
+import ContextNav from "@/components/nav/ContextNav";
 
 const PatientDetails = () => {
   return (
     <>
-      <div className="grid grid-cols-3 gap-4">
-        <Container className="col-span-1">
+      <Container>
+        <ContextNav />
+      </Container>
+      <Container transparent className="grid grid-cols-8 gap-4">
+        {/* Patient Details */}
+        <Container className="col-span-2 w-full">
           <div className="flex items-center gap-4">
             <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue-100">
               <FontAwesomeIcon
@@ -40,7 +45,7 @@ const PatientDetails = () => {
               <FontAwesomeIcon icon={faPaw} className="text-yellow-500" />
               <h2 className="text-lg font-bold">Patient Information</h2>
             </div>
-            <div className="grid grid-cols-2 gap-4 text-sm">
+            <div className="grid grid-cols-2 gap-4">
               <SingleDataItem heading="Species" title="Canine" />
               <SingleDataItem heading="Breed" title="Beagle" />
               <SingleDataItem heading="Gender" title="Male" />
@@ -49,7 +54,8 @@ const PatientDetails = () => {
               <SingleDataItem heading="Weight" title="11.4 kg" />
               <SingleDataItem heading="Microchip ID" title="985121056784328" />
             </div>
-            <hr className="my-3" />
+            <Spacer small />
+            <Divider />
             <div>
               <div className="mb-3 flex items-center gap-2">
                 <FontAwesomeIcon icon={faUser} className="text-green-500" />
@@ -82,7 +88,10 @@ const PatientDetails = () => {
             </div>
           </div>
         </Container>
-      </div>
+
+        {/* Right Side */}
+        <Container className="col-span-6 w-full">NOTES</Container>
+      </Container>
     </>
   );
 };
