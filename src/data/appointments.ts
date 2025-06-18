@@ -26,7 +26,7 @@ export const appointments: Appointment[] = [
     provider: "Dr. Sarah Johnson",
     facility: "Main Clinic",
     reason: "Annual wellness exam and vaccinations",
-    status: "Scheduled",
+    status: "Cancelled",
   },
   {
     time: "10:30 AM",
@@ -40,7 +40,7 @@ export const appointments: Appointment[] = [
     provider: "Dr. Michael Brown",
     facility: "Downtown Branch",
     reason: "Regular dental cleaning and checkup",
-    status: "Scheduled",
+    status: "In Progress",
   },
   {
     time: "1:15 PM",

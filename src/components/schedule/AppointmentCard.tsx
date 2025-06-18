@@ -67,7 +67,7 @@ const visitTypeColors = {
 };
 
 const statusColors = {
-  Scheduled: "text-blue-600",
+  Scheduled: "text-teal-600",
   "In Progress": "text-yellow-600",
   Completed: "text-green-600",
   Cancelled: "text-red-600",
