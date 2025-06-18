@@ -6,6 +6,8 @@ import {
   faShieldDog,
   faChevronLeft,
   faChevronRight,
+  faCog,
+  faUser,
 } from "@fortawesome/pro-duotone-svg-icons";
 
 interface TooltipProps {
@@ -23,12 +25,13 @@ const Tooltip = ({ text, children, isExpanded }: TooltipProps) => {
       onMouseEnter={() => !isExpanded && setIsVisible(true)}
       onMouseLeave={() => !isExpanded && setIsVisible(false)}
       onTouchStart={() => !isExpanded && setIsVisible(true)}
-      onTouchEnd={() => !isExpanded && setIsVisible(false)}>
+      onTouchEnd={() => !isExpanded && setIsVisible(false)}
+    >
       {children}
       {!isExpanded && isVisible && (
-        <div className="absolute left-full ml-2 top-1/2 -translate-y-1/2 px-2 py-1 bg-black text-white text-sm rounded-md whitespace-nowrap z-50">
+        <div className="absolute top-1/2 left-full z-50 ml-2 -translate-y-1/2 rounded-md bg-black px-2 py-1 text-sm whitespace-nowrap text-white">
           {text}
-          <div className="absolute left-0 top-1/2 -translate-x-1 -translate-y-1/2 w-2 h-2 bg-black transform rotate-45"></div>
+          <div className="absolute top-1/2 left-0 h-2 w-2 -translate-x-1 -translate-y-1/2 rotate-45 transform bg-black"></div>
         </div>
       )}
     </div>
@@ -40,36 +43,38 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`h-screen bg-white border-r border-neutral-200 transition-all duration-300 ${
+      className={`h-screen border-r border-neutral-200 bg-white transition-all duration-300 ${
         isExpanded ? "w-64" : "w-20"
-      }`}>
+      }`}
+    >
       {/* UPPER */}
-      <div className="h-full flex flex-col">
+      <div className="flex h-full flex-col">
         <div className="flex items-center justify-between px-6 py-4">
           {isExpanded ? (
             <span className="font-bold text-black">
-              <FontAwesomeIcon icon={faShieldDog} className="w-4 h-4 mr-2" />
+              <FontAwesomeIcon icon={faShieldDog} className="mr-2 h-4 w-4" />
               ZoeyVet
             </span>
           ) : (
             <span className="font-bold text-black">
-              <FontAwesomeIcon icon={faShieldDog} className="w-4 h-4" />
+              <FontAwesomeIcon icon={faShieldDog} className="h-4 w-4" />
             </span>
           )}
           <button
             onClick={() => setIsExpanded(!isExpanded)}
-            className="p-1 rounded-lg hover:bg-neutral-100 transition-colors"
-            title={isExpanded ? "Collapse sidebar" : "Expand sidebar"}>
+            className="rounded-lg p-1 transition-colors hover:bg-neutral-100"
+            title={isExpanded ? "Collapse sidebar" : "Expand sidebar"}
+          >
             <FontAwesomeIcon
               icon={isExpanded ? faChevronLeft : faChevronRight}
-              className="w-4 h-4 text-neutral-500"
+              className="h-4 w-4 text-neutral-500"
             />
           </button>
         </div>
-        <div className="w-full h-px bg-neutral-200"></div>
+        <div className="h-px w-full bg-neutral-200"></div>
 
         {/* NAV */}
-        <nav className="flex flex-col gap-1 p-4">
+        <nav className="flex flex-1 flex-col gap-1 p-4">
           {isExpanded && (
             <p className="text-xs font-semibold text-neutral-500">Main</p>
           )}
@@ -77,15 +82,17 @@ const Sidebar = () => {
             <Tooltip
               key={item.path}
               text={item.tooltip}
-              isExpanded={isExpanded}>
+              isExpanded={isExpanded}
+            >
               <Link
                 href={item.path}
-                className={`flex items-center group gap-2 p-2 text-black rounded-lg hover:border-neutral-300 border transition-all border-white ${
+                className={`group flex items-center gap-2 rounded-lg border border-white p-2 text-black transition-all hover:border-neutral-300 ${
                   !isExpanded && "justify-center"
-                }`}>
+                }`}
+              >
                 <FontAwesomeIcon
                   icon={item.icon}
-                  className={`w-4 h-4 ${item.iconColor} ${
+                  className={`h-4 w-4 ${item.iconColor} ${
                     isExpanded ? "group-hover:ml-2" : ""
                   } transition-all`}
                 />
@@ -96,6 +103,47 @@ const Sidebar = () => {
             </Tooltip>
           ))}
         </nav>
+
+        {/* LOWER SECTION */}
+        <div className="border-t border-neutral-200 p-4">
+          {/* Settings */}
+          <Tooltip text="Settings" isExpanded={isExpanded}>
+            <Link
+              href="/settings"
+              className={`group mb-3 flex items-center gap-2 rounded-lg border border-white p-2 text-black transition-all hover:border-neutral-300 ${
+                !isExpanded && "justify-center"
+              }`}
+            >
+              <FontAwesomeIcon
+                icon={faCog}
+                className={`h-4 w-4 text-gray-500 ${
+                  isExpanded ? "group-hover:ml-2" : ""
+                } transition-all`}
+              />
+              {isExpanded && (
+                <span className="text-sm font-semibold">Settings</span>
+              )}
+            </Link>
+          </Tooltip>
+
+          {/* User Profile */}
+          <div className="flex items-center gap-3 rounded-lg border bg-neutral-100 p-2 transition-colors hover:bg-neutral-200">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white shadow">
+              <FontAwesomeIcon
+                icon={faUser}
+                className="h-4 w-4 text-neutral-900"
+              />
+            </div>
+            {isExpanded && (
+              <div className="flex flex-col">
+                <span className="text-sm font-semibold text-black">
+                  Dr. Gronkiewicz
+                </span>
+                <span className="text-xs text-gray-500">Veterinarian</span>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );

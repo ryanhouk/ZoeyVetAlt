@@ -53,10 +53,10 @@ export const navigationItems: NavItem[] = [
     iconColor: "text-orange-500",
   },
   {
-    title: "Analytics",
-    path: "/analytics",
+    title: "Reports",
+    path: "/reports",
     icon: faChartLine,
-    tooltip: "Analytics",
+    tooltip: "Reports",
     iconColor: "text-red-500",
   },
 ];

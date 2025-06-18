@@ -1,3 +1,6 @@
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import Link from "next/link";
 import React from "react";
 
@@ -6,9 +9,16 @@ type Props = {
   description?: string;
   linkTitle?: string;
   linkHref?: string;
+  linkIcon?: IconProp;
 };
 
-const ContentHeader = ({ title, description, linkTitle, linkHref }: Props) => {
+const ContentHeader = ({
+  title,
+  description,
+  linkTitle,
+  linkHref,
+  linkIcon = faArrowRight,
+}: Props) => {
   return (
     <div className="mb-3 flex flex-col">
       <div className="flex items-center justify-between">
@@ -16,9 +26,13 @@ const ContentHeader = ({ title, description, linkTitle, linkHref }: Props) => {
         {linkTitle && linkHref && (
           <Link
             href={linkHref}
-            className="rounded-full px-3 py-1 text-sm font-semibold transition-all hover:bg-neutral-200"
+            className="group rounded-full px-3 py-1 text-sm font-semibold whitespace-nowrap transition-all hover:bg-neutral-200"
           >
             {linkTitle}
+            <FontAwesomeIcon
+              icon={linkIcon}
+              className="-ml-3 text-neutral-600 opacity-0 transition-all duration-300 group-hover:ml-2 group-hover:opacity-100"
+            />
           </Link>
         )}
       </div>

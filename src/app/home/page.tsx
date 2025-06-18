@@ -15,6 +15,7 @@ import {
   faFlaskVial,
   faSparkles,
 } from "@fortawesome/pro-duotone-svg-icons";
+import { faExpand, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 
 const page = () => {
   return (
@@ -25,7 +26,12 @@ const page = () => {
         <Itinerary />
       </Container>
       <Container>
-        <ContentHeader title="Quick Actions" linkTitle="Edit" linkHref="/" />
+        <ContentHeader
+          title="Quick Actions"
+          linkTitle="Edit"
+          linkHref="/"
+          linkIcon={faPenToSquare}
+        />
         <div className="grid grid-cols-6 gap-4">
           <IconCard
             href="/appointments"
@@ -76,6 +82,7 @@ const page = () => {
           title="Up Next"
           linkTitle="Expand View"
           linkHref="/home"
+          linkIcon={faExpand}
         />
         <div className="flex flex-col gap-4">
           {appointments.map((appointment) => (
