@@ -6,7 +6,9 @@ export interface Appointment {
     owner: string;
   };
   type: string;
-  status: "Regular" | "In Progress" | "Scheduled";
+  provider: string;
+  facility: string;
+  status: "Scheduled" | "In Progress" | "Completed" | "Cancelled" | "No Show";
 }
 
 export const appointments: Appointment[] = [
@@ -18,6 +20,8 @@ export const appointments: Appointment[] = [
       owner: "John Smith",
     },
     type: "Annual Checkup",
+    provider: "Dr. Gronk",
+    facility: "Rocklin",
     status: "Scheduled",
   },
   {
@@ -28,6 +32,8 @@ export const appointments: Appointment[] = [
       owner: "Sarah Johnson",
     },
     type: "Dental Cleaning",
+    provider: "Dr. Edwards",
+    facility: "Rocklin",
     status: "Scheduled",
   },
   {
@@ -38,6 +44,8 @@ export const appointments: Appointment[] = [
       owner: "Michael Brown",
     },
     type: "Vaccination",
+    provider: "Dr. Gronk",
+    facility: "Chico",
     status: "Scheduled",
   },
   {
@@ -48,6 +56,8 @@ export const appointments: Appointment[] = [
       owner: "Emily Davis",
     },
     type: "Follow-up",
+    provider: "Dr. Edwards",
+    facility: "Rocklin",
     status: "Scheduled",
   },
   {
@@ -58,6 +68,8 @@ export const appointments: Appointment[] = [
       owner: "David Wilson",
     },
     type: "Post-op",
+    provider: "Dr. Edwards",
+    facility: "Rocklin",
     status: "Scheduled",
   },
 ];

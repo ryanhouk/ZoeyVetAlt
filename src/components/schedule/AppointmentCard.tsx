@@ -1,3 +1,6 @@
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 interface Appointment {
   time: string;
   patient: {
@@ -6,7 +9,10 @@ interface Appointment {
     owner: string;
   };
   type: string;
-  status: "Regular" | "In Progress" | "Scheduled";
+  provider: string;
+  facility: string;
+  reason: string;
+  status: "Scheduled" | "In Progress" | "Completed" | "Cancelled" | "No Show";
 }
 
 interface AppointmentCardProps {
@@ -56,10 +62,18 @@ const visitTypeColors = {
   },
 };
 
+const statusColors = {
+  Scheduled: "text-blue-600",
+  "In Progress": "text-yellow-600",
+  Completed: "text-green-600",
+  Cancelled: "text-red-600",
+  "No Show": "text-gray-600",
+};
+
 export function AppointmentCard({ appointment }: AppointmentCardProps) {
   return (
     <div
-      className={`flex items-center justify-between p-3 rounded-lg border-l-4 hover:brightness-95 transition-all ${
+      className={`flex items-center p-3 rounded-lg border-l-4 hover:brightness-95 transition-all ${
         visitTypeColors[appointment.type as keyof typeof visitTypeColors]
           ?.border || "border-gray-500"
       } ${
@@ -70,17 +84,42 @@ export function AppointmentCard({ appointment }: AppointmentCardProps) {
           ?.lightBorder || "border-gray-200"
       } transition-all cursor-pointer`}>
       <div className="flex items-center gap-3">
+        {/* APPT TIME */}
         <div
           className={`text-lg font-semibold bg-white min-w-28 text-center py-2 px-3 rounded-lg border border-black/40`}>
           {appointment.time}
         </div>
-        <div className="h-8 w-px bg-black/20" />
-        <div>
-          <div className="font-bold">
-            {appointment.patient.name} • {appointment.type}
+        {/* PATIENT INFO */}
+        <div className="flex items-center min-w-80 gap-3 flex-1">
+          <div className="h-8 w-px bg-black/20" />
+          <div className="flex flex-col">
+            <div className="font-bold">
+              {appointment.patient.name} • {appointment.type}
+            </div>
+            <div className="font-medium text-sm text-black/70">
+              {appointment.patient.breed} • {appointment.patient.owner}
+            </div>
           </div>
-          <div className="font-medium text-sm text-black/70">
-            {appointment.patient.breed} • {appointment.patient.owner}
+        </div>
+        {/* PROVIDER INFO */}
+        <div className="flex items-center gap-3 min-w-80 flex-1">
+          <div className="h-8 w-px bg-black/20" />
+          <div className="flex flex-col">
+            <div className="text-black font-bold">{appointment.provider}</div>
+            <div className="text-sm font-medium text-black/70">
+              {appointment.facility}
+            </div>
+          </div>
+        </div>
+
+        {/* STATUS & CHECK IN */}
+        <div id="checkin" className="flex gap-6 items-center">
+          <div className={`font-semibold ${statusColors[appointment.status]}`}>
+            {appointment.status}
+          </div>
+          <div className="px-4 py-2 font-bold bg-teal-500 text-white rounded-lg hover:bg-teal-600 transition-colors">
+            Check In
+            <FontAwesomeIcon icon={faArrowRight} className="ml-2" />
           </div>
         </div>
       </div>
