@@ -56,7 +56,7 @@ export const navigationItems: NavItem[] = [
   },
   {
     title: "Billing",
-    path: "/",
+    path: "/billing",
     icon: faDollarSign,
     tooltip: "Billing",
     iconColor: "text-emerald-500",
