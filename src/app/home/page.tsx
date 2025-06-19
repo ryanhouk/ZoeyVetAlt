@@ -136,6 +136,10 @@ const Page = () => {
               This space can be used for a chat available to all team members.
               So the front desk can quickly communicate with anyone in the back
               of house or from a visit room to someone else, etc.
+              <br />
+              <br />
+              However, this may need to be moved to a FAB where it can be
+              accessed from anywhere.
             </div>
           </Container>
         </div>

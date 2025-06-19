@@ -141,7 +141,7 @@ export function AppointmentCard({ appointment }: AppointmentCardProps) {
         {/* STATUS & CHECK IN */}
         <div id="checkin" className="flex items-center gap-4">
           <div
-            className={`rounded-full border border-black/20 bg-white px-3 py-1 text-sm font-semibold ${
+            className={`whitespace-nowrap rounded-full border border-black/20 bg-white px-3 py-1 text-sm font-semibold ${
               statusColors[appointment.status]
             }`}
           >
@@ -152,7 +152,7 @@ export function AppointmentCard({ appointment }: AppointmentCardProps) {
           </div> */}
           <button
             onClick={handleCheckInToggle}
-            className={`rounded-full border-2 px-4 py-2 font-bold transition-colors hover:cursor-pointer ${
+            className={`whitespace-nowrap rounded-full border-2 px-4 py-2 font-bold transition-colors hover:cursor-pointer ${
               isCheckedIn
                 ? "border-orange-600 bg-orange-600 text-white hover:bg-orange-700"
                 : "border-teal-600 bg-teal-600 text-white hover:bg-teal-700"

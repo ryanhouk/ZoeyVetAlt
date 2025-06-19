@@ -1,167 +1,69 @@
-import {
-  faArrowRight,
-  faDog,
-  faCat,
-  faArrowLeft,
-} from "@fortawesome/free-solid-svg-icons";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
 
-interface Appointment {
-  time: string;
-  patient: {
-    name: string;
-    breed: string;
-    owner: string;
-    gender: "male" | "female";
-  };
-  type: string;
-  provider: string;
-  facility: string;
-  status: "Scheduled" | "In Progress" | "Completed" | "Cancelled" | "No Show";
+interface AppointmentEmptyCardProps {
+  onClick?: () => void;
+  time?: string;
 }
 
-interface AppointmentCardProps {
-  appointment: Appointment;
-}
-
-const visitTypeColors = {
-  "Annual Checkup": {
-    border: "border-blue-500",
-    lightBorder: "border-blue-200",
-    bg: "bg-blue-50",
-  },
-  "Dental Cleaning": {
-    border: "border-indigo-500",
-    lightBorder: "border-indigo-200",
-    bg: "bg-indigo-50",
-  },
-  Recheck: {
-    border: "border-orange-500",
-    lightBorder: "border-orange-200",
-    bg: "bg-orange-50",
-  },
-  Vaccination: {
-    border: "border-green-500",
-    lightBorder: "border-green-200",
-    bg: "bg-green-50",
-  },
-  "Follow-up": {
-    border: "border-yellow-500",
-    lightBorder: "border-yellow-200",
-    bg: "bg-yellow-50",
-  },
-  "Post-op": {
-    border: "border-red-500",
-    lightBorder: "border-red-200",
-    bg: "bg-red-50",
-  },
-  Emergency: {
-    border: "border-red-600",
-    lightBorder: "border-red-200",
-    bg: "bg-red-50",
-  },
-  Surgery: {
-    border: "border-indigo-500",
-    lightBorder: "border-indigo-200",
-    bg: "bg-indigo-50",
-  },
-};
-
-const statusColors = {
-  Scheduled: "text-teal-600",
-  "In Progress": "text-yellow-600",
-  Completed: "text-green-600",
-  Cancelled: "text-red-600",
-  "No Show": "text-gray-600",
-};
-
-export function AppointmentCard({ appointment }: AppointmentCardProps) {
-  const [isCheckedIn, setIsCheckedIn] = useState(false);
-
-  // Determine if it's a cat based on breed containing "Cat"
-  const isCat = appointment.patient.breed.toLowerCase().includes("cat");
-  const speciesIcon = isCat ? faCat : faDog;
-
-  const handleCheckInToggle = () => {
-    setIsCheckedIn(!isCheckedIn);
-  };
-
+export function AppointmentEmptyCard({
+  onClick,
+  time,
+}: AppointmentEmptyCardProps) {
   return (
     <div
-      className={`flex items-center rounded-xl border-l-4 p-3 transition-all hover:brightness-95 ${
-        visitTypeColors[appointment.type as keyof typeof visitTypeColors]
-          ?.border || "border-gray-500"
-      } ${
-        visitTypeColors[appointment.type as keyof typeof visitTypeColors]?.bg ||
-        "bg-gray-50"
-      } ${
-        visitTypeColors[appointment.type as keyof typeof visitTypeColors]
-          ?.lightBorder || "border-gray-200"
-      } cursor-pointer transition-all`}
+      onClick={onClick}
+      className="group flex cursor-pointer items-center rounded-xl border-2 border-dashed border-gray-300 p-3 transition-all hover:border-gray-400 hover:bg-gray-50"
     >
       <div className="flex w-full items-center gap-3">
-        {/* APPT TIME */}
-        <div
-          className={`min-w-28 rounded-lg border border-black/40 bg-white px-3 py-2 text-center text-lg font-semibold`}
-        >
-          {appointment.time}
+        {/* TIME SLOT */}
+        <div className="min-w-28 rounded-lg border border-dashed border-gray-300 bg-transparent px-3 py-2 text-center text-lg font-semibold text-gray-500 group-hover:text-gray-600">
+          {time || "9:00 AM"}
         </div>
-        {/* PATIENT INFO */}
+
+        {/* EMPTY CONTENT AREA */}
         <div className="flex flex-1 items-center gap-3">
-          <div className="h-8 w-px bg-black/20" />
-          <FontAwesomeIcon
-            icon={speciesIcon}
-            className={`flex h-8 w-8 items-center justify-center rounded-full border border-black/20 bg-white p-2 text-lg ${
-              appointment.patient.gender === "male"
-                ? "text-blue-500"
-                : "text-pink-500"
-            }`}
-          />
-          <div className="flex min-w-96 flex-col">
-            <div className="font-bold">
-              {appointment.patient.name} • {appointment.type}
+          {/* <div className="h-8 w-px bg-gray-200" /> */}
+
+          {/* EMPTY PATIENT ICON */}
+          {/* <div className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-dashed border-gray-300 bg-transparent p-2 text-lg text-gray-400 group-hover:text-gray-500">
+            <FontAwesomeIcon icon={faPlus} className="text-sm" />
+          </div> */}
+
+          {/* EMPTY PATIENT INFO */}
+          {/* <div className="flex min-w-96 flex-col">
+            <div className="font-bold text-gray-400 group-hover:text-gray-500">
+              Add Patient • Select Type
             </div>
-            <div className="text-sm font-medium text-black/70">
-              {appointment.patient.breed} • {appointment.patient.owner}
+            <div className="text-sm font-medium text-gray-300 group-hover:text-gray-400">
+              Breed • Owner Name
             </div>
-          </div>
-          {/* PROVIDER INFO */}
-          <div className="flex items-center gap-3">
-            <div className="h-8 w-px bg-black/20" />
+          </div> */}
+
+          {/* EMPTY PROVIDER INFO */}
+          {/* <div className="flex items-center gap-3">
+            <div className="h-8 w-px bg-gray-200" />
             <div className="flex min-w-80 flex-col">
-              <div className="font-bold text-black">{appointment.provider}</div>
-              <div className="text-sm font-medium text-black/70">
-                {appointment.facility}
+              <div className="font-bold text-gray-400 group-hover:text-gray-500">
+                Select Provider
+              </div>
+              <div className="text-sm font-medium text-gray-300 group-hover:text-gray-400">
+                Facility
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
 
-        {/* STATUS & CHECK IN */}
-        <div id="checkin" className="flex items-center gap-4">
-          <div
-            className={`rounded-full border border-black/20 bg-white px-3 py-1 text-sm font-semibold ${
-              statusColors[appointment.status]
-            }`}
-          >
-            {appointment.status}
-          </div>
+        {/* EMPTY STATUS & ACTION */}
+        <div className="flex items-center gap-4">
+          {/* <div className="rounded-full border border-dashed border-gray-300 bg-transparent px-3 py-1 text-sm font-semibold text-gray-400 group-hover:text-gray-500">
+            Scheduled
+          </div> */}
 
-          <button
-            onClick={handleCheckInToggle}
-            className={`rounded-full border-2 px-4 py-2 font-bold transition-colors hover:cursor-pointer ${
-              isCheckedIn
-                ? "border-orange-600 bg-orange-600 text-white hover:bg-orange-700"
-                : "border-teal-600 bg-teal-600 text-white hover:bg-teal-700"
-            }`}
-          >
-            {isCheckedIn ? "Check Out" : "Check In"}
-            <FontAwesomeIcon
-              icon={isCheckedIn ? faArrowRight : faArrowLeft}
-              className="ml-2"
-            />
-          </button>
+          <div className="rounded-full border-2 border-dashed border-gray-300 bg-transparent px-4 py-2 font-bold text-gray-400 transition-colors group-hover:border-gray-400 group-hover:text-gray-500">
+            Create Appointment
+            <FontAwesomeIcon icon={faPlus} className="ml-2 text-sm" />
+          </div>
         </div>
       </div>
     </div>
