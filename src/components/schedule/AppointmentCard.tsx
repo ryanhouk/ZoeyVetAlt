@@ -1,8 +1,4 @@
-import {
-  faArrowRight,
-  faMars,
-  faVenus,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight, faDog, faCat } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface Appointment {
@@ -75,6 +71,10 @@ const statusColors = {
 };
 
 export function AppointmentCard({ appointment }: AppointmentCardProps) {
+  // Determine if it's a cat based on breed containing "Cat"
+  const isCat = appointment.patient.breed.toLowerCase().includes("cat");
+  const speciesIcon = isCat ? faCat : faDog;
+
   return (
     <div
       className={`flex items-center rounded-xl border-l-4 p-3 transition-all hover:brightness-95 ${
@@ -99,7 +99,7 @@ export function AppointmentCard({ appointment }: AppointmentCardProps) {
         <div className="flex flex-1 items-center gap-3">
           <div className="h-8 w-px bg-black/20" />
           <FontAwesomeIcon
-            icon={appointment.patient.gender === "male" ? faMars : faVenus}
+            icon={speciesIcon}
             className={`flex h-8 w-8 items-center justify-center rounded-full border border-black/20 bg-white p-2 text-lg ${
               appointment.patient.gender === "male"
                 ? "text-blue-500"
