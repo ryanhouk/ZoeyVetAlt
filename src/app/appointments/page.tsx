@@ -15,6 +15,7 @@ import {
   faFilter,
   faCalendarDay,
   faCalendarWeek,
+  faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import SearchInput from "@/components/form/SearchInput";
 import { TabControl } from "@/components/buttons/TabControl";
@@ -118,7 +119,13 @@ const Page = () => {
     <>
       <Container transparent className="grid grid-cols-12 gap-4">
         <Container className="col-span-8 w-full space-y-4">
-          <ContentHeader title="All Appointments" />
+          <ContentHeader
+            title="All Appointments"
+            isButton
+            linkTitle="Create Appointment"
+            onClick={() => handleCreateAppointment(timeSlots[0])}
+            buttonIcon={faPlus}
+          />
           <Divider />
           {/* Date Navigation */}
           <div className="flex items-center justify-between">
@@ -184,7 +191,7 @@ const Page = () => {
 
         {/* NEW APPT DETAILS */}
         <Container className="col-span-4 w-full">
-          <ContentHeader title="New Appointment" />
+          <ContentHeader title="Possible Side Panel" />
           <Divider />
         </Container>
       </Container>

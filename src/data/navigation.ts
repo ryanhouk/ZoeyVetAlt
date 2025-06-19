@@ -7,6 +7,7 @@ import {
   faListCheck,
   faBox,
   faUsers,
+  faDollarSign,
 } from "@fortawesome/pro-duotone-svg-icons";
 
 export interface NavItem {
@@ -52,6 +53,13 @@ export const navigationItems: NavItem[] = [
     icon: faBox,
     tooltip: "Inventory",
     iconColor: "text-orange-500",
+  },
+  {
+    title: "Billing",
+    path: "/",
+    icon: faDollarSign,
+    tooltip: "Billing",
+    iconColor: "text-emerald-500",
   },
   {
     title: "Reports",

@@ -15,6 +15,7 @@ type Props = {
   onClick?: () => void;
   buttonType?: "button" | "submit" | "reset";
   disabled?: boolean;
+  buttonIcon?: IconProp;
 };
 
 const ContentHeader = ({
@@ -27,13 +28,21 @@ const ContentHeader = ({
   onClick,
   buttonType = "button",
   disabled = false,
+  buttonIcon,
 }: Props) => {
   const linkClasses =
-    "group rounded-full px-3 py-1 text-sm font-semibold whitespace-nowrap transition-all hover:bg-neutral-200 disabled:opacity-50 disabled:cursor-not-allowed";
+    "group rounded-full px-3 py-1 hover:cursor-pointer text-sm font-semibold whitespace-nowrap transition-all hover:bg-neutral-200 disabled:opacity-50 disabled:cursor-not-allowed";
 
   const iconElement = (
     <FontAwesomeIcon
       icon={linkIcon}
+      className="-ml-3 text-neutral-600 opacity-0 transition-all duration-300 group-hover:ml-2 group-hover:opacity-100"
+    />
+  );
+
+  const buttonIconElement = (
+    <FontAwesomeIcon
+      icon={buttonIcon || linkIcon}
       className="-ml-3 text-neutral-600 opacity-0 transition-all duration-300 group-hover:ml-2 group-hover:opacity-100"
     />
   );
@@ -51,7 +60,7 @@ const ContentHeader = ({
               className={linkClasses}
             >
               {linkTitle}
-              {iconElement}
+              {buttonIconElement}
             </button>
           ) : (
             linkHref && (

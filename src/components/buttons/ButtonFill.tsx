@@ -19,7 +19,7 @@ const ButtonFill = ({
 }: Props) => {
   return (
     <button
-      className={`group border-primary bg-primary hover:bg-primary/80 flex items-center justify-center gap-2 rounded-full border-2 px-4 py-2 text-sm font-bold whitespace-nowrap text-black transition-all lg:px-5 lg:py-3 ${className}`}
+      className={`group flex items-center justify-center gap-2 whitespace-nowrap rounded-full border-2 border-teal-600 bg-teal-600 px-4 py-2 text-sm font-bold text-white transition-all hover:cursor-pointer hover:border-teal-700 hover:bg-teal-700 lg:px-5 lg:py-3 ${className}`}
     >
       {iconLeft && (
         <FontAwesomeIcon icon={iconLeft} className={`h-4 w-4 ${iconColor}`} />

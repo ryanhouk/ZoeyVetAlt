@@ -29,9 +29,9 @@ const Tooltip = ({ text, children, isExpanded }: TooltipProps) => {
     >
       {children}
       {!isExpanded && isVisible && (
-        <div className="absolute top-1/2 left-full z-50 ml-2 -translate-y-1/2 rounded-md bg-black px-2 py-1 text-sm whitespace-nowrap text-white">
+        <div className="absolute left-full top-1/2 z-50 ml-2 -translate-y-1/2 whitespace-nowrap rounded-md bg-black px-2 py-1 text-sm text-white">
           {text}
-          <div className="absolute top-1/2 left-0 h-2 w-2 -translate-x-1 -translate-y-1/2 rotate-45 transform bg-black"></div>
+          <div className="absolute left-0 top-1/2 h-2 w-2 -translate-x-1 -translate-y-1/2 rotate-45 transform bg-black"></div>
         </div>
       )}
     </div>
@@ -62,12 +62,12 @@ const Sidebar = () => {
           )}
           <button
             onClick={() => setIsExpanded(!isExpanded)}
-            className="rounded-lg p-1 transition-colors hover:bg-neutral-100"
+            className="rounded-lg p-1 transition-colors hover:cursor-pointer hover:bg-neutral-300"
             title={isExpanded ? "Collapse sidebar" : "Expand sidebar"}
           >
             <FontAwesomeIcon
               icon={isExpanded ? faChevronLeft : faChevronRight}
-              className="h-4 w-4 text-neutral-500"
+              className="h-4 w-4 text-neutral-900"
             />
           </button>
         </div>

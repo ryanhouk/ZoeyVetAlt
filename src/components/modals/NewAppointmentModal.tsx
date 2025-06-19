@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark } from "@fortawesome/pro-regular-svg-icons";
+import { faCalendarPlus } from "@fortawesome/pro-duotone-svg-icons";
+import ButtonFill from "../buttons/ButtonFill";
 
 interface NewAppointmentModalProps {
   isOpen: boolean;
@@ -25,7 +26,7 @@ export default function NewAppointmentModal({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/25 backdrop-blur-sm"
+            className="fixed inset-0 bg-black/35 backdrop-blur-sm"
           />
 
           {/* Modal */}
@@ -34,22 +35,18 @@ export default function NewAppointmentModal({
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.95, opacity: 0, y: 10 }}
             transition={{ type: "spring", duration: 0.5 }}
-            className="relative z-50 w-full max-w-2xl rounded-lg bg-white p-6 shadow-xl"
+            className="relative z-50 w-full max-w-2xl rounded-3xl bg-white p-6 shadow-xl"
           >
-            {/* Close button */}
-            <button
-              onClick={onClose}
-              className="absolute right-4 top-4 text-gray-400 hover:text-gray-600"
-            >
-              <FontAwesomeIcon icon={faXmark} className="h-5 w-5" />
-            </button>
-
             {/* Modal header */}
             <div className="mb-6">
-              <h2 className="text-2xl font-semibold text-gray-900">
-                New Appointment
-              </h2>
-              <p className="mt-1 text-sm text-gray-500">
+              <div className="flex items-center gap-2">
+                <FontAwesomeIcon
+                  icon={faCalendarPlus}
+                  className="text-xl text-emerald-600"
+                />
+                <h2 className="text-2xl font-bold">New Appointment</h2>
+              </div>
+              <p className="mt-1 font-medium">
                 Schedule a new appointment for a patient
                 {prePopulatedTime && (
                   <span className="ml-1 font-medium text-blue-600">
@@ -105,16 +102,14 @@ export default function NewAppointmentModal({
             </div>
 
             {/* Modal footer */}
-            <div className="mt-6 flex justify-end space-x-3">
+            <div className="mt-6 flex justify-between space-x-3">
               <button
                 onClick={onClose}
-                className="rounded-md px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100"
+                className="rounded-full border-2 px-4 py-2 text-sm font-medium transition-all hover:cursor-pointer hover:bg-gray-200"
               >
                 Cancel
               </button>
-              <button className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700">
-                Create Appointment
-              </button>
+              <ButtonFill title="Create Appointment" />
             </div>
           </motion.div>
         </div>
