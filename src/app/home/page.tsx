@@ -23,6 +23,13 @@ import { faExpand, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 const Page = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const visitTypeColors = [
+    { type: "Recheck", color: "bg-yellow-500", textColor: "text-black" },
+    { type: "Post-op", color: "bg-green-500", textColor: "text-black" },
+    { type: "Emergency", color: "bg-red-600", textColor: "text-black" },
+    { type: "Surgery", color: "bg-indigo-500", textColor: "text-black" },
+  ];
+
   return (
     <>
       <div className="grid grid-cols-12 gap-6">
@@ -99,6 +106,17 @@ const Page = () => {
               linkIcon={faExpand}
               onClick={() => setIsModalOpen(true)}
             />
+            <div className="flex gap-4 text-xs font-medium">
+              {visitTypeColors.map((visitType) => (
+                <div key={visitType.type} className="flex items-center gap-2">
+                  <div
+                    className={`h-3 w-3 rounded-full ${visitType.color}`}
+                  ></div>
+                  <span className={visitType.textColor}>{visitType.type}</span>
+                </div>
+              ))}
+            </div>
+            <Spacer small />
             <div className="flex flex-col gap-4">
               {appointments.map((appointment) => (
                 <AppointmentCard
