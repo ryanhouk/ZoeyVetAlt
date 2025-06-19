@@ -43,7 +43,7 @@ const Page = () => {
               linkHref="/"
               linkIcon={faPenToSquare}
             />
-            <div className="flex flex-wrap gap-4">
+            <div className="grid grid-cols-6 gap-4">
               <IconCard
                 href="/appointments"
                 title="Appointments"
@@ -114,6 +114,11 @@ const Page = () => {
         <div className="col-span-3">
           <Container className="h-full">
             <ContentHeader title="Team Chat" />
+            <div className="text-teal-700">
+              This space can be used for a chat available to all team members.
+              So the front desk can quickly communicate with anyone in the back
+              of house, etc.
+            </div>
           </Container>
         </div>
       </div>
