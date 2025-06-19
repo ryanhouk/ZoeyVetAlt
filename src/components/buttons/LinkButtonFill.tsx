@@ -23,7 +23,7 @@ const LinkButtonFill = ({
   return (
     <Link
       href={url}
-      className={`group border-primary bg-primary flex items-center justify-center gap-2 rounded-full border-2 px-4 py-2 text-sm font-bold whitespace-nowrap text-black transition-all hover:brightness-110 lg:px-5 lg:py-3 ${className}`}
+      className={`group flex items-center justify-center gap-2 rounded-full border-2 border-neutral-200 bg-neutral-200 px-4 py-2 text-sm font-bold whitespace-nowrap transition-all lg:px-5 lg:py-3 ${className}`}
     >
       {iconLeft && (
         <FontAwesomeIcon icon={iconLeft} className={`h-4 w-4 ${iconColor}`} />

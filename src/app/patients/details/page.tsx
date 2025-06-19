@@ -17,6 +17,7 @@ import LinkButtonBorder from "@/components/buttons/LinkButtonBorder";
 import ContextNav from "@/components/nav/ContextNav";
 import SmallHeading from "@/components/headings/SmallHeading";
 import MedHistoryCard from "@/components/cards/MedHistoryCard";
+import ContentHeader from "@/components/headings/ContentHeader";
 
 const PatientDetails = () => {
   return (
@@ -93,7 +94,9 @@ const PatientDetails = () => {
         </Container>
 
         {/* Right Side */}
-        <Container className="col-span-4 w-full">NOTES</Container>
+        <Container className="col-span-4 w-full">
+          <ContentHeader title="Main Heading" />
+        </Container>
         <div className="col-span-2">
           <Container className="w-full">
             <SmallHeading
@@ -127,6 +130,11 @@ const PatientDetails = () => {
               title="Client Chat"
               iconColor="text-blue-500"
             />
+            <div className="text-teal-700">
+              We can create the ability to chat with the client here just like a
+              standard SMS chat. This would be a third party integration,
+              invisible to AEC, but noted for development purposes.
+            </div>
           </Container>
         </div>
       </Container>
