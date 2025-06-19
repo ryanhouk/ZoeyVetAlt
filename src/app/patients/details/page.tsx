@@ -4,16 +4,19 @@ import Heading from "@/components/headings/Heading";
 import Divider from "@/components/layout/Divider";
 import SingleDataItem from "@/components/cards/SingleDataPoint";
 import Spacer from "@/components/layout/Spacer";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faComments,
   faDog,
   faFile,
   faPaw,
   faUser,
 } from "@fortawesome/pro-duotone-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faClockRotateLeft } from "@fortawesome/free-solid-svg-icons";
 import LinkButtonBorder from "@/components/buttons/LinkButtonBorder";
 import ContextNav from "@/components/nav/ContextNav";
 import SmallHeading from "@/components/headings/SmallHeading";
+import MedHistoryCard from "@/components/cards/MedHistoryCard";
 
 const PatientDetails = () => {
   return (
@@ -41,7 +44,12 @@ const PatientDetails = () => {
           <Spacer small />
           <Divider />
           <div>
-            <SmallHeading icon={faPaw} title="Patient Information" showEdit />
+            <SmallHeading
+              icon={faPaw}
+              title="Patient Information"
+              showBtn
+              iconColor="text-yellow-500"
+            />
             <div className="grid grid-cols-2 gap-4">
               <SingleDataItem heading="Species" title="Canine" />
               <SingleDataItem heading="Breed" title="Beagle" />
@@ -57,7 +65,7 @@ const PatientDetails = () => {
               <SmallHeading
                 icon={faUser}
                 title="Client Information"
-                showEdit
+                showBtn
                 iconColor="text-green-500"
               />
               <SingleDataItem heading="Owner" title="John Smith" />
@@ -87,8 +95,39 @@ const PatientDetails = () => {
         {/* Right Side */}
         <Container className="col-span-4 w-full">NOTES</Container>
         <div className="col-span-2">
-          <Container className="w-full">CLIENT COMMS / CHAT</Container>
-          <Container className="w-full">CLIENT COMMS</Container>
+          <Container className="w-full">
+            <SmallHeading
+              icon={faClockRotateLeft}
+              title="Medical History"
+              iconColor="text-purple-500"
+              btnTitle="See All"
+              showBtn
+            />
+            <div className="space-y-3">
+              <MedHistoryCard
+                date={new Date("2025-09-20")}
+                visitType="Final Follow Up"
+                provider="Dr. Edwards"
+              />
+              <MedHistoryCard
+                date={new Date("2025-07-16")}
+                visitType="Follow Up Visit"
+                provider="Dr. Gronkiewicz"
+              />
+              <MedHistoryCard
+                date={new Date("2025-06-19")}
+                visitType="Enucleation Procedure"
+                provider="Dr. Gronkiewicz"
+              />
+            </div>
+          </Container>
+          <Container className="w-full">
+            <SmallHeading
+              icon={faComments}
+              title="Client Chat"
+              iconColor="text-blue-500"
+            />
+          </Container>
         </div>
       </Container>
     </>

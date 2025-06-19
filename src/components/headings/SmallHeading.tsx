@@ -1,18 +1,20 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPencil, IconDefinition } from "@fortawesome/free-solid-svg-icons";
+import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 
 type Props = {
   icon: IconDefinition;
   title: string;
   iconColor?: string;
-  showEdit?: boolean;
+  showBtn?: boolean;
+  btnTitle?: string;
 };
 
 const SmallHeading = ({
   icon,
   title,
   iconColor = "text-yellow-500",
-  showEdit = false,
+  showBtn = false,
+  btnTitle = "Edit",
 }: Props) => {
   return (
     <>
@@ -21,10 +23,9 @@ const SmallHeading = ({
           <FontAwesomeIcon icon={icon} className={iconColor} />
           <h2 className="text-lg font-bold">{title}</h2>
         </div>
-        {showEdit && (
-          <div className="flex items-center gap-1 rounded-full px-2 py-1 text-xs font-medium opacity-0 transition-opacity group-hover:opacity-100 hover:cursor-pointer hover:bg-neutral-100">
-            Edit
-            <FontAwesomeIcon icon={faPencil} className="text-neutral-500" />
+        {showBtn && (
+          <div className="flex items-center gap-1 rounded-full px-2 py-1 text-xs font-medium opacity-0 transition-opacity group-hover:opacity-100 hover:cursor-pointer hover:bg-neutral-200">
+            {btnTitle}
           </div>
         )}
       </div>

@@ -14,7 +14,7 @@ const Container = ({
   return (
     <section
       className={`mx-auto mb-4 max-w-[1920px] ${
-        transparent ? "" : "rounded-3xl bg-white px-8 py-12 shadow"
+        transparent ? "" : "rounded-3xl bg-white px-8 py-10 shadow"
       } ${className}`}
     >
       {children}
