@@ -1,12 +1,15 @@
+"use client";
+
 import ContentHeader from "@/components/headings/ContentHeader";
 import Container from "@/components/layout/Container";
 import { AppointmentCard } from "@/components/schedule/AppointmentCard";
 import { appointments } from "@/data/appointments";
 import Greeting from "@/components/specialty/Greeting";
-import React from "react";
+import React, { useState } from "react";
 import Itinerary from "@/components/specialty/Itinerary";
 import Spacer from "@/components/layout/Spacer";
 import IconCard from "@/components/cards/IconCard";
+import ApptFullScreenModal from "@/components/modals/ApptFullScreenModal";
 import {
   faCalendarAlt,
   faListCheck,
@@ -17,81 +20,112 @@ import {
 } from "@fortawesome/pro-duotone-svg-icons";
 import { faExpand, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 
-const page = () => {
+const Page = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <>
-      <Container>
-        <Greeting />
-        <Spacer small />
-        <Itinerary />
-      </Container>
-      <Container>
-        <ContentHeader
-          title="Quick Actions"
-          linkTitle="Edit"
-          linkHref="/"
-          linkIcon={faPenToSquare}
-        />
-        <div className="grid grid-cols-6 gap-4">
-          <IconCard
-            href="/appointments"
-            title="Appointments"
-            icon={faCalendarAlt}
-            iconColor="text-purple-500"
-            description="View and manage appointments"
-          />
-          <IconCard
-            href="/tasks"
-            title="Tasks"
-            icon={faListCheck}
-            iconColor="text-green-500"
-            description="5 uncompleted tasks"
-          />
-          <IconCard
-            href="/patients"
-            title="Patients"
-            icon={faPaw}
-            iconColor="text-yellow-500"
-            description="Search and manage patients"
-          />
-          <IconCard
-            href="/inventory"
-            title="Inventory"
-            icon={faBox}
-            iconColor="text-orange-500"
-            description="View and manage inventory"
-          />
-          <IconCard
-            href="/"
-            title="Lab Results"
-            icon={faFlaskVial}
-            iconColor="text-red-500"
-            description="3 new labs to review."
-          />
-          <IconCard
-            href="/"
-            title="Auto-Notes"
-            icon={faSparkles}
-            iconColor="text-indigo-500"
-            description="AI transcriptions records."
-          />
+      <div className="grid grid-cols-12 gap-6">
+        {/* Left side - Main content */}
+        <div className="col-span-9 space-y-6">
+          {/* GREETING AND ITINERARY */}
+          <Container>
+            <Greeting />
+            <Spacer small />
+            <Itinerary />
+          </Container>
+
+          {/* QUICK ACTION CARDS */}
+          <Container>
+            <ContentHeader
+              title="Quick Actions"
+              linkTitle="Edit"
+              linkHref="/"
+              linkIcon={faPenToSquare}
+            />
+            <div className="flex flex-wrap gap-4">
+              <IconCard
+                href="/appointments"
+                title="Appointments"
+                icon={faCalendarAlt}
+                iconColor="text-purple-500"
+                description="View and manage appointments"
+              />
+              <IconCard
+                href="/tasks"
+                title="Tasks"
+                icon={faListCheck}
+                iconColor="text-green-500"
+                description="5 uncompleted tasks"
+              />
+              <IconCard
+                href="/patients"
+                title="Patients"
+                icon={faPaw}
+                iconColor="text-yellow-500"
+                description="Search and manage patients"
+              />
+              <IconCard
+                href="/inventory"
+                title="Inventory"
+                icon={faBox}
+                iconColor="text-orange-500"
+                description="View and manage inventory"
+              />
+              <IconCard
+                href="/"
+                title="Lab Results"
+                icon={faFlaskVial}
+                iconColor="text-red-500"
+                description="3 new labs to review."
+              />
+              <IconCard
+                href="/"
+                title="Auto-Notes"
+                icon={faSparkles}
+                iconColor="text-indigo-500"
+                description="AI transcriptions records."
+              />
+            </div>
+          </Container>
+
+          {/* APPT LIST */}
+          <Container>
+            <ContentHeader
+              title="Up Next"
+              isButton
+              linkTitle="Expand View"
+              linkHref="/home"
+              linkIcon={faExpand}
+              onClick={() => setIsModalOpen(true)}
+            />
+            <div className="flex flex-col gap-4">
+              {appointments.map((appointment) => (
+                <AppointmentCard
+                  key={appointment.time}
+                  appointment={appointment}
+                />
+              ))}
+            </div>
+          </Container>
         </div>
-      </Container>
-      <Container>
-        <ContentHeader
-          title="Up Next"
-          linkTitle="Expand View"
-          linkHref="/home"
-          linkIcon={faExpand}
-        />
-        <div className="flex flex-col gap-4">
-          {appointments.map((appointment) => (
-            <AppointmentCard key={appointment.time} appointment={appointment} />
-          ))}
+
+        {/* Right side - Team Chat */}
+        <div className="col-span-3">
+          <Container className="h-full">
+            <ContentHeader title="Team Chat" />
+          </Container>
         </div>
-      </Container>
+      </div>
+
+      <ApptFullScreenModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        appointments={appointments}
+        selectedDate={new Date()}
+      />
     </>
   );
 };
 
-export default page;
+export default Page;

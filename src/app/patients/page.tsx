@@ -7,7 +7,7 @@ import React from "react";
 const page = () => {
   return (
     <>
-      <Container>
+      <Container small>
         <ContentHeader title="Patient Search" />
         <SearchInput
           placeholder="Search for a patient"
@@ -16,7 +16,7 @@ const page = () => {
           }}
         />
       </Container>
-      <Container>RECENT PATIENTS LIST</Container>
+      <Container small>RECENT PATIENTS LIST</Container>
     </>
   );
 };
