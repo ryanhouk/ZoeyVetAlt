@@ -6,6 +6,7 @@ import {
   faChartLine,
   faListCheck,
   faBox,
+  faUsers,
 } from "@fortawesome/pro-duotone-svg-icons";
 
 export interface NavItem {
@@ -36,7 +37,7 @@ export const navigationItems: NavItem[] = [
     path: "/tasks",
     icon: faListCheck,
     tooltip: "Tasks",
-    iconColor: "text-green-500",
+    iconColor: "text-green-600",
   },
   {
     title: "Patients",
@@ -58,5 +59,12 @@ export const navigationItems: NavItem[] = [
     icon: faChartLine,
     tooltip: "Reports",
     iconColor: "text-red-500",
+  },
+  {
+    title: "Staff Management",
+    path: "/staff-management",
+    icon: faUsers,
+    tooltip: "Staff Management",
+    iconColor: "text-teal-600",
   },
 ];

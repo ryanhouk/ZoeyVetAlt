@@ -9,6 +9,7 @@ import {
   faComments,
   faDog,
   faFile,
+  faList,
   faPaw,
   faUser,
 } from "@fortawesome/pro-duotone-svg-icons";
@@ -28,6 +29,13 @@ const PatientDetails = () => {
       <Container transparent className="grid grid-cols-8 gap-4">
         {/* Patient Details */}
         <Container className="col-span-2 w-full">
+          <LinkButtonBorder
+            title="All Patients"
+            iconLeft={faList}
+            url="/patients"
+          />
+          <Spacer small />
+          <Divider />
           <div className="flex items-center gap-4">
             <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue-100">
               <FontAwesomeIcon

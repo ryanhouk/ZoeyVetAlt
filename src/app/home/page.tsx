@@ -84,7 +84,7 @@ const Page = () => {
                 title="Auto-Notes"
                 icon={faSparkles}
                 iconColor="text-indigo-500"
-                description="AI transcriptions records."
+                description="AI transcriptions for records."
               />
             </div>
           </Container>
@@ -117,7 +117,7 @@ const Page = () => {
             <div className="text-teal-700">
               This space can be used for a chat available to all team members.
               So the front desk can quickly communicate with anyone in the back
-              of house, etc.
+              of house or from a visit room to someone else, etc.
             </div>
           </Container>
         </div>
