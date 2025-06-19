@@ -6,10 +6,10 @@ import ContextNav from "@/components/nav/ContextNav";
 const page = () => {
   return (
     <>
-      <Container>
+      <Container small>
         <ContextNav />
       </Container>
-      <Container>
+      <Container small>
         <ContentHeader title="Daily Tasks" />
       </Container>
     </>

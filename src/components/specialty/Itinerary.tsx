@@ -4,8 +4,8 @@ import Badge from "@/components/indicators/Badge";
 const Itinerary = () => {
   return (
     <>
-      <div className="flex bg-blue-100 flex-col p-4 rounded-2xl">
-        <h2 className="text-2xl font-bold mb-2 text-blue-900">
+      <div className="flex flex-col rounded-2xl bg-blue-100 p-4">
+        <h2 className="mb-2 text-2xl font-bold text-blue-900">
           Today&apos;s Overview
         </h2>
         <div className="flex gap-2">
