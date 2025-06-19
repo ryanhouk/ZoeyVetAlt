@@ -8,12 +8,12 @@ import {
   faDog,
   faFile,
   faPaw,
-  faPencil,
   faUser,
 } from "@fortawesome/pro-duotone-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import LinkButtonBorder from "@/components/buttons/LinkButtonBorder";
 import ContextNav from "@/components/nav/ContextNav";
+import SmallHeading from "@/components/headings/SmallHeading";
 
 const PatientDetails = () => {
   return (
@@ -41,10 +41,7 @@ const PatientDetails = () => {
           <Spacer small />
           <Divider />
           <div>
-            <div className="mb-3 flex items-center gap-2">
-              <FontAwesomeIcon icon={faPaw} className="text-yellow-500" />
-              <h2 className="text-lg font-bold">Patient Information</h2>
-            </div>
+            <SmallHeading icon={faPaw} title="Patient Information" showEdit />
             <div className="grid grid-cols-2 gap-4">
               <SingleDataItem heading="Species" title="Canine" />
               <SingleDataItem heading="Breed" title="Beagle" />
@@ -57,10 +54,12 @@ const PatientDetails = () => {
             <Spacer small />
             <Divider />
             <div>
-              <div className="mb-3 flex items-center gap-2">
-                <FontAwesomeIcon icon={faUser} className="text-green-500" />
-                <h2 className="text-lg font-bold">Client Information</h2>
-              </div>
+              <SmallHeading
+                icon={faUser}
+                title="Client Information"
+                showEdit
+                iconColor="text-green-500"
+              />
               <SingleDataItem heading="Owner" title="John Smith" />
               <SingleDataItem heading="Email" title="john.smith@example.com" />
               <SingleDataItem heading="Phone" title="555-111-2222" />
@@ -75,22 +74,22 @@ const PatientDetails = () => {
                 <FontAwesomeIcon icon={faFile} className="text-purple-500" />
                 <h2 className="text-lg font-bold">Notes</h2>
               </div>
-              <p className="">
+              <p className="rounded-lg border bg-neutral-100 p-4">
                 Vaccinations up to date. Tends to be very vocal during visits.
               </p>
               <div className="mt-3">
-                <LinkButtonBorder
-                  title="Edit Note"
-                  url="/"
-                  iconRight={faPencil}
-                />
+                <LinkButtonBorder title="Save" url="/" />
               </div>
             </div>
           </div>
         </Container>
 
         {/* Right Side */}
-        <Container className="col-span-6 w-full">NOTES</Container>
+        <Container className="col-span-4 w-full">NOTES</Container>
+        <div className="col-span-2">
+          <Container className="w-full">CLIENT COMMS / CHAT</Container>
+          <Container className="w-full">CLIENT COMMS</Container>
+        </div>
       </Container>
     </>
   );
