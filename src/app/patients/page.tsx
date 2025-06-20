@@ -3,7 +3,8 @@ import ContentHeader from "@/components/headings/ContentHeader";
 import Container from "@/components/layout/Container";
 import SearchInput from "@/components/form/SearchInput";
 import React from "react";
-import Link from "next/link";
+import PatientSegmentCard from "@/components/cards/PatientSegmentCard";
+import { patients } from "@/data/patients";
 
 const page = () => {
   return (
@@ -24,10 +25,9 @@ const page = () => {
         </div>
       </Container>
       <Container small className="flex flex-col gap-4">
-        RECENT PATIENTS LIST
-        <Link className="font-bold hover:underline" href="/patients/details">
-          Temp Link to view Patient Details
-        </Link>
+        {patients.map((patient) => (
+          <PatientSegmentCard key={patient.id} patient={patient} />
+        ))}
       </Container>
     </>
   );
