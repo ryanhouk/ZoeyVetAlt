@@ -13,7 +13,7 @@ export function AppointmentEmptyCard({
   return (
     <div
       onClick={onClick}
-      className="group flex cursor-pointer items-center rounded-xl border-2 border-dashed border-gray-300 p-3 transition-all hover:border-gray-400 hover:bg-gray-50"
+      className="group flex cursor-pointer items-center rounded-xl border border-dashed border-gray-300 p-3 transition-all hover:border-gray-400 hover:bg-gray-50"
     >
       <div className="flex w-full items-center gap-3">
         {/* TIME SLOT */}
@@ -60,7 +60,7 @@ export function AppointmentEmptyCard({
             Scheduled
           </div> */}
 
-          <div className="rounded-full border-2 border-dashed border-gray-300 bg-transparent px-4 py-2 font-bold text-gray-400 transition-colors group-hover:border-gray-400 group-hover:text-gray-500">
+          <div className="rounded-full border border-dashed border-gray-300 bg-transparent px-4 py-2 font-bold text-gray-400 transition-colors group-hover:border-gray-400 group-hover:text-gray-500">
             Create Appointment
             <FontAwesomeIcon icon={faPlus} className="ml-2 text-sm" />
           </div>

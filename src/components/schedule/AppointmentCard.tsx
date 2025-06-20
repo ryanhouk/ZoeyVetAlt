@@ -129,7 +129,7 @@ export function AppointmentCard({ appointment }: AppointmentCardProps) {
           {/* PROVIDER INFO */}
           <div className="flex items-center gap-3">
             <div className="h-8 w-px bg-black/20" />
-            <div className="flex min-w-80 flex-col">
+            <div className="flex min-w-64 flex-col">
               <div className="font-bold text-black">{appointment.provider}</div>
               <div className="text-sm font-medium text-black/70">
                 {appointment.facility}
