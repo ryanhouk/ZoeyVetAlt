@@ -89,7 +89,7 @@ export function AppointmentCard({ appointment }: AppointmentCardProps) {
 
   return (
     <div
-      className={`flex items-center rounded-xl border-l-4 p-3 transition-all hover:brightness-95 ${
+      className={`flex flex-col gap-3 rounded-xl border-l-4 p-3 transition-all hover:brightness-95 sm:flex-row sm:items-center sm:gap-3 ${
         visitTypeColors[appointment.type as keyof typeof visitTypeColors]
           ?.border || "border-gray-500"
       } ${
@@ -100,13 +100,27 @@ export function AppointmentCard({ appointment }: AppointmentCardProps) {
           ?.lightBorder || "border-gray-200"
       } cursor-pointer transition-all`}
     >
-      <div className="flex w-full items-center gap-3">
-        {/* APPT TIME */}
-        <div
-          className={`min-w-28 rounded-lg border border-black/40 bg-white px-3 py-2 text-center text-lg font-semibold`}
-        >
+      {/* TOP ROW - TIME AND STATUS */}
+      <div className="flex items-center justify-between sm:hidden">
+        <div className="min-w-20 rounded-lg border border-black/40 bg-white px-2 py-1 text-center text-sm font-semibold sm:min-w-28 sm:px-3 sm:py-2 sm:text-lg">
           {appointment.time}
         </div>
+        <div
+          className={`whitespace-nowrap rounded-full border border-black/20 bg-white px-2 py-1 text-xs font-semibold sm:px-3 sm:py-1 sm:text-sm ${
+            statusColors[appointment.status]
+          }`}
+        >
+          {appointment.status}
+        </div>
+      </div>
+
+      {/* DESKTOP LAYOUT */}
+      <div className="hidden w-full items-center gap-3 sm:flex">
+        {/* APPT TIME */}
+        <div className="min-w-28 rounded-lg border border-black/40 bg-white px-3 py-2 text-center text-lg font-semibold">
+          {appointment.time}
+        </div>
+
         {/* PATIENT INFO */}
         <div className="flex flex-1 items-center gap-3">
           <div className="h-8 w-px bg-black/20" />
@@ -126,6 +140,7 @@ export function AppointmentCard({ appointment }: AppointmentCardProps) {
               {appointment.patient.breed} • {appointment.patient.owner}
             </div>
           </div>
+
           {/* PROVIDER INFO */}
           <div className="flex items-center gap-3">
             <div className="h-8 w-px bg-black/20" />
@@ -139,7 +154,7 @@ export function AppointmentCard({ appointment }: AppointmentCardProps) {
         </div>
 
         {/* STATUS & CHECK IN */}
-        <div id="checkin" className="flex items-center gap-4">
+        <div className="flex items-center gap-4">
           <div
             className={`whitespace-nowrap rounded-full border border-black/20 bg-white px-3 py-1 text-sm font-semibold ${
               statusColors[appointment.status]
@@ -147,9 +162,6 @@ export function AppointmentCard({ appointment }: AppointmentCardProps) {
           >
             {appointment.status}
           </div>
-          {/* <div className="px-4 py-2 font-bold bg-white border-2 border-teal-500 text-teal-600 hover:text-white hover:border-teal-600 rounded-full hover:bg-teal-600 transition-colors">
-            Patient Details
-          </div> */}
           <button
             onClick={handleCheckInToggle}
             className={`whitespace-nowrap rounded-full border-2 px-4 py-2 font-bold transition-colors hover:cursor-pointer ${
@@ -162,6 +174,59 @@ export function AppointmentCard({ appointment }: AppointmentCardProps) {
             <FontAwesomeIcon
               icon={isCheckedIn ? faArrowRight : faArrowLeft}
               className="ml-2"
+            />
+          </button>
+        </div>
+      </div>
+
+      {/* MOBILE LAYOUT */}
+      <div className="flex flex-col gap-3 sm:hidden">
+        {/* PATIENT INFO */}
+        <div className="flex items-center gap-3">
+          <FontAwesomeIcon
+            icon={speciesIcon}
+            className={`flex h-8 w-8 items-center justify-center rounded-full border border-black/20 bg-white p-2 text-lg ${
+              appointment.patient.gender === "male"
+                ? "text-blue-500"
+                : "text-pink-500"
+            }`}
+          />
+          <div className="flex flex-1 flex-col">
+            <div className="text-sm font-bold">
+              {appointment.patient.name} • {appointment.type}
+            </div>
+            <div className="text-xs font-medium text-black/70">
+              {appointment.patient.breed} • {appointment.patient.owner}
+            </div>
+          </div>
+        </div>
+
+        {/* PROVIDER INFO */}
+        <div className="flex items-center gap-3">
+          <div className="flex flex-1 flex-col">
+            <div className="text-sm font-bold text-black">
+              {appointment.provider}
+            </div>
+            <div className="text-xs font-medium text-black/70">
+              {appointment.facility}
+            </div>
+          </div>
+        </div>
+
+        {/* CHECK IN BUTTON */}
+        <div className="flex justify-end">
+          <button
+            onClick={handleCheckInToggle}
+            className={`whitespace-nowrap rounded-full border-2 px-3 py-2 text-sm font-bold transition-colors hover:cursor-pointer ${
+              isCheckedIn
+                ? "border-orange-600 bg-orange-600 text-white hover:bg-orange-700"
+                : "border-teal-600 bg-teal-600 text-white hover:bg-teal-700"
+            }`}
+          >
+            {isCheckedIn ? "Check Out" : "Check In"}
+            <FontAwesomeIcon
+              icon={isCheckedIn ? faArrowRight : faArrowLeft}
+              className="ml-1"
             />
           </button>
         </div>
