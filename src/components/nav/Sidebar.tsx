@@ -69,7 +69,7 @@ const Sidebar = () => {
       {/* Mobile Overlay */}
       {isMobileOpen && (
         <div
-          className="fixed inset-0 z-40 bg-black bg-opacity-50 lg:hidden"
+          className="fixed inset-0 z-40 bg-black/50 lg:hidden"
           onClick={closeMobileMenu}
         />
       )}
