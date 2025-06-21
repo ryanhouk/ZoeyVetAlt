@@ -50,7 +50,7 @@ const ContentHeader = ({
   return (
     <div className="mb-3 flex flex-col">
       <div className="flex items-center justify-between">
-        <h1 className="mb-2 text-2xl font-bold">{title}</h1>
+        <h1 className="mb-2 text-lg font-bold lg:text-2xl">{title}</h1>
         {linkTitle &&
           (isButton ? (
             <button

@@ -44,13 +44,15 @@ const Greeting = () => {
   }, []);
 
   return (
-    <section className="relative z-10 flex items-end justify-between">
-      <h1 className="text-2xl font-bold lg:text-4xl">
+    <section className="relative z-10 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end sm:gap-0">
+      <h1 className="text-xl font-bold sm:text-2xl lg:text-4xl">
         Good morning, Dr. Gronkiewicz
       </h1>
-      <div className="flex flex-col">
-        <p className="font-bold text-black/50">{dayOfWeek}</p>
-        <p className="text-5xl font-semibold tabular-nums">
+      <div className="flex flex-col items-end">
+        <p className="text-sm font-bold text-black/50 sm:text-base">
+          {dayOfWeek}
+        </p>
+        <p className="text-3xl font-semibold tabular-nums sm:text-4xl lg:text-5xl">
           <span>{time}</span>
         </p>
       </div>

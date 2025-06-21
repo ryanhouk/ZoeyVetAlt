@@ -32,7 +32,7 @@ const Page = () => {
 
   return (
     <>
-      <div className="grid grid-cols-12 gap-6">
+      <div className="grid-cols-12 gap-6 lg:grid">
         {/* Left side - Main content */}
         <div className="col-span-9 space-y-6">
           {/* GREETING AND ITINERARY */}
@@ -50,7 +50,7 @@ const Page = () => {
               linkHref="/"
               linkIcon={faPenToSquare}
             />
-            <div className="grid grid-cols-6 gap-4">
+            <div className="grid grid-cols-2 gap-4 lg:grid-cols-6">
               <IconCard
                 href="/appointments"
                 title="Appointments"
