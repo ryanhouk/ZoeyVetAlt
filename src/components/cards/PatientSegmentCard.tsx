@@ -48,8 +48,72 @@ const PatientSegmentCard = ({ patient }: PatientSegmentCardProps) => {
 
   return (
     <Link href={`/patients/${patient.id}`} className="block">
-      <div className="flex cursor-pointer items-center rounded-xl border border-l-4 border-gray-300 bg-gray-50 px-4 py-2 transition-all hover:brightness-95">
-        <div className="flex w-full items-center gap-4">
+      <div className="flex flex-col gap-3 rounded-xl border border-l-4 border-gray-300 bg-gray-50 p-3 transition-all hover:brightness-95 sm:flex-row sm:items-center sm:gap-4 sm:p-4">
+        {/* MOBILE LAYOUT */}
+        <div className="flex flex-col gap-3 sm:hidden">
+          {/* TOP ROW - PATIENT INFO AND STATUS */}
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <FontAwesomeIcon
+                icon={getSpeciesIcon(patient.species)}
+                className="flex h-8 w-8 items-center justify-center rounded-full border border-gray-300 bg-white p-1.5 text-lg text-gray-600 sm:h-10 sm:w-10 sm:p-2 sm:text-xl"
+              />
+              <div className="flex flex-col">
+                <div className="text-base font-bold sm:text-lg">
+                  {patient.name}
+                </div>
+                <div className="text-xs font-medium text-gray-600 sm:text-sm">
+                  {patient.breed} • {patient.gender}
+                </div>
+              </div>
+            </div>
+            <div className="whitespace-nowrap rounded-full border border-gray-300 bg-white px-2 py-1 text-xs font-semibold text-gray-700 sm:px-3 sm:py-1 sm:text-sm">
+              {patient.status}
+            </div>
+          </div>
+
+          {/* PATIENT DETAILS */}
+          <div className="flex flex-col gap-2">
+            <div className="flex items-center gap-2 text-xs">
+              <FontAwesomeIcon
+                icon={faCalendar}
+                className="w-3 text-gray-500"
+              />
+              <span className="font-medium">{patient.age}</span>
+              <span className="text-gray-400">•</span>
+              <FontAwesomeIcon
+                icon={faWeightHanging}
+                className="w-3 text-gray-500"
+              />
+              <span className="font-medium">{patient.weight}</span>
+            </div>
+            {/* <div className="flex items-center gap-2 text-xs">
+              <FontAwesomeIcon
+                icon={faMicrochip}
+                className="w-3 text-gray-500"
+              />
+              <span className="truncate font-medium text-gray-600">
+                {patient.microchipId}
+              </span>
+            </div> */}
+          </div>
+
+          {/* OWNER INFO */}
+          <div className="flex flex-col gap-1">
+            <div className="text-sm font-bold text-black">
+              {patient.owner.name}
+            </div>
+            <div className="truncate text-xs font-medium text-gray-600">
+              {patient.owner.email}
+            </div>
+            <div className="text-xs font-medium text-gray-600">
+              {patient.owner.phone}
+            </div>
+          </div>
+        </div>
+
+        {/* DESKTOP LAYOUT */}
+        <div className="hidden w-full items-center gap-4 sm:flex">
           {/* PATIENT ICON & BASIC INFO */}
           <div className="flex items-center gap-3">
             <FontAwesomeIcon

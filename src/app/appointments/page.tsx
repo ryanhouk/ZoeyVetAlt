@@ -117,7 +117,7 @@ const Page = () => {
 
   return (
     <>
-      <Container transparent className="grid grid-cols-12 gap-4">
+      <Container transparent className="grid gap-4 lg:grid-cols-12">
         <Container className="col-span-8 w-full space-y-4">
           <ContentHeader
             title="All Appointments"
