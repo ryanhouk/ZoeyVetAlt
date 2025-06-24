@@ -1,8 +1,7 @@
-"use client";
-
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Sidebar from "@/components/nav/Sidebar";
+import UserbackWidget from "@/components/specialty/UserbackWidget";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -23,6 +22,8 @@ export default function RootLayout({
           <Sidebar />
           <main className="flex-1 p-4 pt-16 lg:p-8 lg:pt-8">{children}</main>
         </div>
+        {/* Userback Widget */}
+        <UserbackWidget />
       </body>
     </html>
   );
