@@ -157,6 +157,7 @@ const PatientDetails = () => {
                 date={new Date("2025-09-20")}
                 visitType="Final Follow Up"
                 provider="Dr. Edwards"
+                secondaryProvider="Dr. Gronkiewicz"
               />
               <MedHistoryCard
                 date={new Date("2025-07-16")}

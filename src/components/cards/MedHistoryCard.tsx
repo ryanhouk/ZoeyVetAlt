@@ -4,6 +4,7 @@ type Props = {
   date: Date;
   visitType: string;
   provider: string;
+  secondaryProvider?: string;
   className?: string;
 };
 
@@ -11,6 +12,7 @@ const MedHistoryCard = ({
   date,
   visitType,
   provider,
+  secondaryProvider,
   className = "",
 }: Props) => {
   const formatDate = (date: Date) => {
@@ -35,7 +37,10 @@ const MedHistoryCard = ({
           <h3 className="mb-1 text-base font-semibold text-neutral-900">
             {visitType}
           </h3>
-          <p className="text-sm text-neutral-600">Treated by {provider}</p>
+          <p className="text-sm text-neutral-600">
+            Treated by {provider}
+            {secondaryProvider ? ` and ${secondaryProvider}` : ""}
+          </p>
         </div>
       </div>
     </div>

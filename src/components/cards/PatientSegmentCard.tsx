@@ -6,7 +6,6 @@ import {
   faUser,
   faCalendar,
   faWeightHanging,
-  faMicrochip,
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 
@@ -46,9 +45,13 @@ const PatientSegmentCard = ({ patient }: PatientSegmentCardProps) => {
     }
   };
 
+  // Gender color: blue for male, pink for female
+  const genderColor =
+    patient.gender === "male" ? "text-blue-500" : "text-pink-500";
+
   return (
     <Link href={`/patients/${patient.id}`} className="block">
-      <div className="flex flex-col gap-3 rounded-xl border border-l-4 border-gray-300 bg-gray-50 p-3 transition-all hover:brightness-95 sm:flex-row sm:items-center sm:gap-4 sm:p-4">
+      <div className="flex flex-col gap-3 rounded-xl border border-l-4 border-gray-300 bg-gray-50 p-3 transition-all hover:brightness-95 sm:flex-row sm:items-center sm:gap-4 lg:px-4 lg:py-2">
         {/* MOBILE LAYOUT */}
         <div className="flex flex-col gap-3 sm:hidden">
           {/* TOP ROW - PATIENT INFO AND STATUS */}
@@ -56,7 +59,7 @@ const PatientSegmentCard = ({ patient }: PatientSegmentCardProps) => {
             <div className="flex items-center gap-3">
               <FontAwesomeIcon
                 icon={getSpeciesIcon(patient.species)}
-                className="flex h-8 w-8 items-center justify-center rounded-full border border-gray-300 bg-white p-1.5 text-lg text-gray-600 sm:h-10 sm:w-10 sm:p-2 sm:text-xl"
+                className={`flex h-8 w-8 items-center justify-center rounded-full border border-gray-300 bg-white p-1.5 text-lg ${genderColor} sm:h-10 sm:w-10 sm:p-2 sm:text-xl`}
               />
               <div className="flex flex-col">
                 <div className="text-base font-bold sm:text-lg">
@@ -118,7 +121,7 @@ const PatientSegmentCard = ({ patient }: PatientSegmentCardProps) => {
           <div className="flex items-center gap-3">
             <FontAwesomeIcon
               icon={getSpeciesIcon(patient.species)}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 bg-white p-2 text-xl text-gray-600"
+              className={`flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 bg-white p-2 text-xl ${genderColor}`}
             />
             <div className="flex min-w-64 flex-col">
               <div className="text-lg font-bold">{patient.name}</div>
@@ -145,7 +148,7 @@ const PatientSegmentCard = ({ patient }: PatientSegmentCardProps) => {
                 />
                 <span className="font-medium">{patient.weight}</span>
               </div>
-              <div className="flex items-center gap-2 text-sm">
+              {/* <div className="flex items-center gap-2 text-sm">
                 <FontAwesomeIcon
                   icon={faMicrochip}
                   className="w-3 text-gray-500"
@@ -153,7 +156,7 @@ const PatientSegmentCard = ({ patient }: PatientSegmentCardProps) => {
                 <span className="font-medium text-gray-600">
                   {patient.microchipId}
                 </span>
-              </div>
+              </div> */}
             </div>
           </div>
 
