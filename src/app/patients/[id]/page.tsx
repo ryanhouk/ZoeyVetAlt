@@ -62,7 +62,7 @@ const PatientDetails = () => {
       <Container>
         <ContextNav />
       </Container>
-      <Container transparent className="grid grid-cols-8 gap-4">
+      <Container transparent className="grid-cols-8 gap-4 xl:grid">
         {/* Patient Details */}
         <Container className="col-span-2 w-full">
           <LinkButtonBorder
